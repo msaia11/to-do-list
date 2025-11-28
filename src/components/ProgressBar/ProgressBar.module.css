@@ -1,0 +1,87 @@
+.progressBarContainer {
+  position: relative;
+  width: 100%;     /* was 50%, now fill available space */
+  height: 22px;
+  background-color: #e2e2e2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Filled actual progress bar */
+.actualBar {
+  position: absolute;
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 12px;
+  transition: width 0.4s ease;
+}
+
+/* Thin vertical target indicator */
+.targetMarker {
+  position: absolute;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background-color: #ff9800;
+  transform: translateX(-50%);
+}
+
+/* Label styles */
+.label {
+  position: absolute;
+  top: -18px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.actualLabel {
+  position: absolute;
+  top: 2px;                /* pin to top inside bar */
+  right: 6px;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.targetLabel {
+  position: absolute;
+  bottom: 5px;                 /* keep inside the bar vertically */
+  left: 100%;                  /* position immediately to the right of the marker */
+  margin-left: 1px;            /* small gap between line and label */
+  font-size: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none;
+  color: #ff9800;
+  transform: translateY(50%);  /* vertically center relative to bottom */
+}
+
+
+
+.goalLabel {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.leftLabel {
+  margin-right: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  width: 50px;         /* keeps the bar aligned even with different label lengths */
+  text-align: right;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
