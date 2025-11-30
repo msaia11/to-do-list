@@ -35,14 +35,14 @@ export const WeeklyView = () => {
   );
 
   const taskTargets = {
-    Bike: 21,
+    Bike: 25,
     "Walk/Run": 4,
     Gym: 4,
     Abs: 2,
     Breakfast: 7,
-    Lunch: 5,
-    Dinner: 5,
-    Snacking: 7,
+    Lunch: 6,
+    Dinner: 6,
+    Snacking: 6,
     Teethcare: 7,
     Words: 15,
     Learning: 2,
