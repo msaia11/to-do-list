@@ -6,11 +6,11 @@ export const BottomSection = ({ weeklyData, setWeeklyData, weekStart }) => {
   const days = ["M", "T", "W", "Th", "F", "S", "Su"];
   const tasks = [
     "Bike", "Walk/Run", "Gym", "Abs", "Breakfast", "Lunch", "Dinner",
-    "Snacking", "Book", "Teethcare", "Body Fat", "Weight",
+    "Snacking", "Book", "Teethcare", "BodyFat", "Weight",
     "Words", "Learning", "NPR", "Stretching"
   ];
 
-  const numericTasks = ["Bike", "Walk/Run", "Body Fat", "Weight", "Words"];
+  const numericTasks = ["Bike", "Walk/Run", "BodyFat", "Weight", "Words"];
 
   // ---------- SAFE DATE HANDLER ----------
   const getDateString = (dayIndex) => {

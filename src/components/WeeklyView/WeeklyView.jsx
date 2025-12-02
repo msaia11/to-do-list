@@ -47,7 +47,7 @@ export const WeeklyView = () => {
     Words: 15,
     Learning: 2,
     NPR: 5,
-    Strethcing: 5
+    Stretching: 5
   };
 
   return (

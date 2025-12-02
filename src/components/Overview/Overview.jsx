@@ -18,7 +18,7 @@ export const Overview = () => {
     "NPR", "Books"
   ];
 
-  const numericGoals = ["Bike", "Walk/Run", "BodyFat", "Weight", "Words"];
+  const numericGoals = ["Bike", "Walk/Run", "Words"];
 
   // ---------- Helper: week number since Dec 1st ----------
   const getWeekNumber = (date) => {
@@ -53,8 +53,41 @@ export const Overview = () => {
 
   if (!goals || !weeklyData) return <div>Loading overview...</div>;
 
+  // Get latest numeric entry from weeklyData
+  const getLatestValue = (goalName) => {
+    // Filter out null, undefined, 0, NaN
+    const validEntries = weeklyData
+      .map((day) => Number(day[goalName]))
+      .filter((v) => v && !isNaN(v));
+  
+    if (validEntries.length === 0) return null; // nothing logged yet
+  
+    return validEntries[validEntries.length - 1]; // latest entry
+  };
+  
+
+  // Special progress for weight + body fat
+  const getReductionProgress = (goalName) => {
+    const start = goals?.[goalName] ?? 0;
+    const latest = getLatestEntry(goalName);
+
+    if (latest === null) return 0;
+
+    return start - latest; // positive = progress
+  };
+
   // ---------- Compute actual values ----------
   const getActualValue = (goalName) => {
+    // Handle Weight & BodyFat as "progress toward goal"
+    if (goalName === "Weight" || goalName === "BodyFat") {
+      const startingValue = goalName == "Weight" ? 193.2 : 22.1;
+      const latest = getLatestValue(goalName);
+      console.log(goalName + ": " + latest);
+      if (latest === null) return 0; // no data yet
+
+      return (startingValue - latest).toFixed(2); // positive = progress
+    }
+    
     if (!numericGoals.includes(goalName)) {
       return weeklyData.reduce((sum, day) => sum + (day[goalName] ? 1 : 0), 0);
     }

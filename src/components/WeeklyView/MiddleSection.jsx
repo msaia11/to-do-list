@@ -4,7 +4,7 @@ export const MiddleSection = ({ weeklyData, taskTargets }) => {
   const completedCounts = {};
   tasks.forEach((task) => {
     completedCounts[task] = weeklyData.reduce((acc, day) => {
-      if (task === "Bike" || task === "Walk/Run") {
+      if (task === "Bike" || task === "Walk/Run" || task == "Words") {
         return acc + (Number(day[task]) || 0);
       } else {
         return acc + (day[task] ? 1 : 0);
